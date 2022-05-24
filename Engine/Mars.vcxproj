@@ -21,6 +21,10 @@
   <ItemGroup>
     <ClCompile Include="src\Engine\Core\EngineSystem.cpp" />
     <ClCompile Include="src\Engine\Core\GameCore.cpp" />
+    <ClCompile Include="src\Engine\Graphics\glad.c" />
+    <ClCompile Include="src\Engine\Graphics\GraphicsCommon.cpp" />
+    <ClCompile Include="src\Engine\Graphics\RenderContext.cpp" />
+    <ClCompile Include="src\Engine\Graphics\Renderer.cpp" />
     <ClCompile Include="src\Engine\Window\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -28,6 +32,10 @@
     <ClInclude Include="src\Engine\Core\EngineConfig.h" />
     <ClInclude Include="src\Engine\Core\EngineSystem.hpp" />
     <ClInclude Include="src\Engine\Core\GameCore.hpp" />
+    <ClInclude Include="src\Engine\Graphics\GraphicsCommon.hpp" />
+    <ClInclude Include="src\Engine\Graphics\InternalGL.hpp" />
+    <ClInclude Include="src\Engine\Graphics\RenderContext.hpp" />
+    <ClInclude Include="src\Engine\Graphics\Renderer.hpp" />
     <ClInclude Include="src\Engine\Window\Window.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -132,7 +140,7 @@
       <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>false</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)src/;$(SolutionDir)../Engine/src/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)src/;$(SolutionDir)../Engine/src/;$(SolutionDir)../Engine/include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>

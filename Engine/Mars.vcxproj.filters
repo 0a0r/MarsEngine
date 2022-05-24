@@ -7,6 +7,12 @@
     <Filter Include="Window">
       <UniqueIdentifier>{b9fcf7ce-9208-441a-9a00-89b264f114b6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Graphics">
+      <UniqueIdentifier>{84c4cce1-68d2-4c24-8fa9-6cb8258895d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Internal">
+      <UniqueIdentifier>{12fc6347-3b3a-4541-b523-c79f2704165c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Engine\Window\Window.cpp">
@@ -17,6 +23,18 @@
     </ClCompile>
     <ClCompile Include="src\Engine\Core\EngineSystem.cpp">
       <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\Graphics\GraphicsCommon.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\Graphics\Renderer.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\Graphics\RenderContext.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\Graphics\glad.c">
+      <Filter>Graphics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -34,6 +52,18 @@
     </ClInclude>
     <ClInclude Include="src\Engine\Core\EngineCommon.hpp">
       <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\Graphics\GraphicsCommon.hpp">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\Graphics\Renderer.hpp">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\Graphics\RenderContext.hpp">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\Graphics\InternalGL.hpp">
+      <Filter>Graphics\Internal</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
