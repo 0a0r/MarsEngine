@@ -65,5 +65,11 @@
     <ClInclude Include="src\Engine\Graphics\InternalGL.hpp">
       <Filter>Graphics\Internal</Filter>
     </ClInclude>
+    <ClInclude Include="src\Engine\Graphics\InternalDX11.hpp">
+      <Filter>Graphics\Internal</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\Graphics\InternalDX12.hpp">
+      <Filter>Graphics\Internal</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

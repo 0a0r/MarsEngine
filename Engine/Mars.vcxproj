@@ -33,6 +33,8 @@
     <ClInclude Include="src\Engine\Core\EngineSystem.hpp" />
     <ClInclude Include="src\Engine\Core\GameCore.hpp" />
     <ClInclude Include="src\Engine\Graphics\GraphicsCommon.hpp" />
+    <ClInclude Include="src\Engine\Graphics\InternalDX11.hpp" />
+    <ClInclude Include="src\Engine\Graphics\InternalDX12.hpp" />
     <ClInclude Include="src\Engine\Graphics\InternalGL.hpp" />
     <ClInclude Include="src\Engine\Graphics\RenderContext.hpp" />
     <ClInclude Include="src\Engine\Graphics\Renderer.hpp" />
