@@ -3,6 +3,8 @@
 #include "Engine/Core/EngineSystem.hpp"
 #include "Engine/Core/EngineConfig.h"
 
+struct GLFWwindow;
+
 namespace EngineSystem
 {
 	class Renderer : public ISystem<Renderer>
@@ -13,9 +15,16 @@ namespace EngineSystem
 		void Initialize(RendererConfig const& _config);
 		void Startup() override;
 		void BeginFrame() override;
+		void EndFrame() override;
 		void Shutdown() override;
+
+		void Present();
 		
 	private:
 		RendererConfig config;
+		int displayWidth;
+		int displayHeight;
+
+		GLFWwindow* glWindow = nullptr;
 	};
 }

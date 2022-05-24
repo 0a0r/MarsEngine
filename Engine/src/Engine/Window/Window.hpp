@@ -19,6 +19,11 @@ namespace EngineSystem
 		void BeginFrame() override;
 		void Shutdown() override;
 
+		int GetWindowWidth() const { return m_windowWidth; }
+		int GetWindowHeight() const { return m_windowHeight; }
+		std::string GetWindowTitle() const { return config.windowTitle; }
+		void* GetHWND() const { return m_hwnd; }
+
 	protected:
 		void CreateOSWindow();
 		void RunMessagePump();
@@ -31,6 +36,9 @@ namespace EngineSystem
 		WindowConfig	config;
 		void*			m_hwnd = nullptr;
 		void*			m_deviceContext = nullptr;
+
+		int				m_windowWidth;
+		int				m_windowHeight;
 	};
 }
 

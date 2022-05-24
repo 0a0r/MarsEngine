@@ -25,6 +25,7 @@ void EngineSystem::Window::Initialize(WindowConfig const& _config)
 
 void EngineSystem::Window::Startup()
 {
+	// Create OS window by native Win32 window
 	CreateOSWindow();
 }
 
@@ -81,6 +82,9 @@ void EngineSystem::Window::CreateOSWindow()
 		// Client window has a taller aspect than desktop; shrink client width to match its height
 		clientWidth = clientHeight * clientAspect;
 	}
+
+	m_windowWidth = (int)clientWidth;
+	m_windowHeight = (int)clientHeight;
 
 	// Calculate client rect bounds by centering the client area
 	float clientMarginX = 0.5f * (desktopWidth - clientWidth);
