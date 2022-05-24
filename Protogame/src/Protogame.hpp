@@ -10,7 +10,6 @@ public:
 	virtual void Startup() override;
 	virtual void Shutdown() override;
 	virtual void Update() override;
-	virtual void Run() override;
 	virtual void RenderScene() const override;
 };
 

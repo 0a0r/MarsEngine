@@ -1,8 +1,18 @@
 #include "Engine/Window/Window.hpp"
+#include "Engine/Core/GameCore.hpp"
 
 LRESULT CALLBACK WinProc(HWND windowHandle, UINT wmMessageCode, WPARAM wParam, LPARAM lParam)
 {
-	return 0;
+	switch (wmMessageCode)
+	{
+		case WM_CLOSE:
+			// #ToDo: Fire quit event
+			if (GameCore::g_App)
+			{
+				GameCore::g_App->HandleQuitRequest();
+			}
+			return 0; // Consume Input
+	}
 
 	// Send back to Windows any unhandled/unconsumed messages we want other apps to see (e.g. play/pause in music apps, etc.)
 	return DefWindowProc(windowHandle, wmMessageCode, wParam, lParam);

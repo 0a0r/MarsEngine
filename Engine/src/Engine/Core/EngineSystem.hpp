@@ -5,6 +5,9 @@ namespace EngineSystem
 	void InitializeAllEngineSystems();
 	void StartupAllEngineSystems();
 	void ShutdownAllEngineSystems();
+
+	void BeginFrameAllEngineSystems();
+	void EndFrameAllEngineSystems();
 }
 
 namespace EngineSystem

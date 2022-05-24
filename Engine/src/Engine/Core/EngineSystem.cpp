@@ -24,3 +24,13 @@ void EngineSystem::ShutdownAllEngineSystems()
 {
 	Window::GetInstance().Shutdown();
 }
+
+void EngineSystem::BeginFrameAllEngineSystems()
+{
+	Window::GetInstance().BeginFrame();
+}
+
+void EngineSystem::EndFrameAllEngineSystems()
+{
+	Window::GetInstance().EndFrame();
+}

@@ -12,10 +12,19 @@ namespace GameCore
 	public:
 		virtual void Startup() = 0;
 		virtual void Shutdown() = 0;
+		virtual void BeginFrame();
 		virtual void Update() = 0;
-		virtual void Run() = 0;
 		virtual void RenderScene() const = 0;
 		virtual void RenderUI() const {};
+		virtual void EndFrame();
+
+		void HandleQuitRequest();
+	
+	public:
+		virtual void Run();
+
+	protected:
+		bool m_quitFlag = false;
 	};
 }
 

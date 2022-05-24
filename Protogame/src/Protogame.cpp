@@ -14,11 +14,6 @@ void Protogame::Update()
 {
 }
 
-void Protogame::Run()
-{
-	
-}
-
 void Protogame::RenderScene() const
 {
 }

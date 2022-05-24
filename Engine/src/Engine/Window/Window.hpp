@@ -18,7 +18,7 @@ namespace EngineSystem
 		void Startup() override;
 		void BeginFrame() override;
 		void Shutdown() override;
-	
+
 	protected:
 		void CreateOSWindow();
 		void RunMessagePump();
