@@ -33,6 +33,7 @@
     <ClInclude Include="src\Engine\Core\EngineSystem.hpp" />
     <ClInclude Include="src\Engine\Core\GameCore.hpp" />
     <ClInclude Include="src\Engine\Core\Rgba.hpp" />
+    <ClInclude Include="src\Engine\Core\Vertex.hpp" />
     <ClInclude Include="src\Engine\Graphics\GraphicsCommon.hpp" />
     <ClInclude Include="src\Engine\Graphics\InternalDX11.hpp" />
     <ClInclude Include="src\Engine\Graphics\InternalDX12.hpp" />
@@ -143,7 +144,7 @@
       <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>false</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)src/;$(SolutionDir)../Engine/src/;$(SolutionDir)../Engine/include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)src/;$(SolutionDir)../Engine/src/;$(SolutionDir)../Engine/include/;$(SolutionDir)../MathLibrary/src/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>

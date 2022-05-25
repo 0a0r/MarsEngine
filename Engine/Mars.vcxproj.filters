@@ -74,5 +74,8 @@
     <ClInclude Include="src\Engine\Core\Rgba.hpp">
       <Filter>Core</Filter>
     </ClInclude>
+    <ClInclude Include="src\Engine\Core\Vertex.hpp">
+      <Filter>Core</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

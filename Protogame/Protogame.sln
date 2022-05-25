@@ -10,6 +10,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Protogame", "Protogame.vcxp
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MEngine", "..\Engine\Mars.vcxproj", "{4B1A8195-52BE-44D1-A4D4-F473227BB305}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MathLibrary", "..\MathLibrary\MathLibrary.vcxproj", "{36C3A633-35B4-4965-886C-93E146C22AAA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -34,6 +36,14 @@ Global
 		{4B1A8195-52BE-44D1-A4D4-F473227BB305}.Release|x64.Build.0 = Release|x64
 		{4B1A8195-52BE-44D1-A4D4-F473227BB305}.Release|x86.ActiveCfg = Release|Win32
 		{4B1A8195-52BE-44D1-A4D4-F473227BB305}.Release|x86.Build.0 = Release|Win32
+		{36C3A633-35B4-4965-886C-93E146C22AAA}.Debug|x64.ActiveCfg = Debug|x64
+		{36C3A633-35B4-4965-886C-93E146C22AAA}.Debug|x64.Build.0 = Debug|x64
+		{36C3A633-35B4-4965-886C-93E146C22AAA}.Debug|x86.ActiveCfg = Debug|Win32
+		{36C3A633-35B4-4965-886C-93E146C22AAA}.Debug|x86.Build.0 = Debug|Win32
+		{36C3A633-35B4-4965-886C-93E146C22AAA}.Release|x64.ActiveCfg = Release|x64
+		{36C3A633-35B4-4965-886C-93E146C22AAA}.Release|x64.Build.0 = Release|x64
+		{36C3A633-35B4-4965-886C-93E146C22AAA}.Release|x86.ActiveCfg = Release|Win32
+		{36C3A633-35B4-4965-886C-93E146C22AAA}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

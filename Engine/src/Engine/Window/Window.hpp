@@ -7,6 +7,8 @@
 #define WIN32_LEAN_AND_MEAN		// Always #define this before #including <windows.h>
 #include <windows.h>
 
+#include "mathpch.h"
+
 namespace EngineSystem
 {
 	class Window : public ISystem<Window>
