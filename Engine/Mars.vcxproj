@@ -32,6 +32,7 @@
     <ClInclude Include="src\Engine\Core\EngineConfig.h" />
     <ClInclude Include="src\Engine\Core\EngineSystem.hpp" />
     <ClInclude Include="src\Engine\Core\GameCore.hpp" />
+    <ClInclude Include="src\Engine\Core\Rgba.hpp" />
     <ClInclude Include="src\Engine\Graphics\GraphicsCommon.hpp" />
     <ClInclude Include="src\Engine\Graphics\InternalDX11.hpp" />
     <ClInclude Include="src\Engine\Graphics\InternalDX12.hpp" />

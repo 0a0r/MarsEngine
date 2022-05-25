@@ -71,5 +71,8 @@
     <ClInclude Include="src\Engine\Graphics\InternalDX12.hpp">
       <Filter>Graphics\Internal</Filter>
     </ClInclude>
+    <ClInclude Include="src\Engine\Core\Rgba.hpp">
+      <Filter>Core</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
