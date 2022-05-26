@@ -3,7 +3,15 @@
 #include "Engine/Core/EngineSystem.hpp"
 #include "Engine/Core/EngineConfig.h"
 
-struct GLFWwindow;
+// #ToDo: Fix the logic in here
+#include "Engine/Graphics/InternalGL.hpp"
+
+struct Rgba8;
+
+namespace Graphics
+{
+	class RenderContext;
+}
 
 namespace EngineSystem
 {
@@ -18,7 +26,12 @@ namespace EngineSystem
 		void EndFrame() override;
 		void Shutdown() override;
 
+	public:
 		void Present();
+
+	public:
+		void ClearScreen(Rgba8 const& clearColor);
+		void SetRenderContext(Graphics::RenderContext const& context);
 		
 	private:
 		RendererConfig config;

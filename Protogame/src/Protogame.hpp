@@ -11,5 +11,6 @@ public:
 	virtual void Shutdown() override;
 	virtual void Update() override;
 	virtual void RenderScene() const override;
-};
 
+	void DrawFirstTriangle();
+};

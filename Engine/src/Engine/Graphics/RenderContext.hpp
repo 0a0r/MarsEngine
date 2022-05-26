@@ -2,13 +2,21 @@
 
 #include "Engine/Graphics/Renderer.hpp"
 
-class RenderContext
+namespace Graphics
 {
-	friend class EngineSystem::Renderer;
+	class VertexBuffer; 
 
-public:
-	virtual ~RenderContext() {}
+	class RenderContext
+	{
+		friend class EngineSystem::Renderer;
 
-private:
-	RenderContext() {}
-};
+	public:
+		virtual			~RenderContext() {}
+
+		VertexBuffer*	CreateVertexBuffer(size_t size, size_t stride, void const* data);
+		void			BindVertexBuffer(VertexBuffer const& vbo);
+
+	private:
+		RenderContext() {}
+	};
+}

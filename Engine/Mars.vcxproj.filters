@@ -36,6 +36,9 @@
     <ClCompile Include="src\Engine\Graphics\glad.c">
       <Filter>Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="src\Engine\Graphics\GpuBuffer.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Engine\Window\Window.hpp">
@@ -71,11 +74,14 @@
     <ClInclude Include="src\Engine\Graphics\InternalDX12.hpp">
       <Filter>Graphics\Internal</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\Core\Rgba.hpp">
-      <Filter>Core</Filter>
+    <ClInclude Include="src\Engine\Graphics\GpuBuffer.hpp">
+      <Filter>Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\Core\Vertex.hpp">
-      <Filter>Core</Filter>
+    <ClInclude Include="src\Engine\Graphics\Rgba.hpp">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\Graphics\Vertex.hpp">
+      <Filter>Graphics</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
