@@ -24,7 +24,7 @@ namespace Graphics
 		BufferHandle GetBufferHandle() const { return m_bufferHandle; }
 
 	protected:
-		VertexBuffer(size_t size, size_t stride, void const* data = nullptr);
+		VertexBuffer(size_t size, size_t stride);
 		VertexBuffer(VertexBuffer const& copyFrom) = delete;
 		virtual ~VertexBuffer();
 

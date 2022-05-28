@@ -39,6 +39,12 @@
     <ClCompile Include="src\Engine\Graphics\GpuBuffer.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="src\Engine\Graphics\Shader.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\Core\FileUtils.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Engine\Window\Window.hpp">
@@ -82,6 +88,12 @@
     </ClInclude>
     <ClInclude Include="src\Engine\Graphics\Vertex.hpp">
       <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\Graphics\Shader.hpp">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\Core\FileUtils.hpp">
+      <Filter>Core</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

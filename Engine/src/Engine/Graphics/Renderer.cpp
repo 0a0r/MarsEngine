@@ -71,7 +71,7 @@ void EngineSystem::Renderer::Shutdown()
 
 void EngineSystem::Renderer::Present()
 {
-	ClearScreen(Rgba8(255, 0, 0, 255));
+	ClearScreen(Rgba8(125, 125, 255, 255));
 
 	glfwSwapBuffers(glWindow);
 	glfwPollEvents();
