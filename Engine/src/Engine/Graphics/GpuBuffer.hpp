@@ -20,8 +20,9 @@ namespace Graphics
 		friend class RenderContext;
 
 	public:
-		void CopyData(void const* data, size_t count, size_t stride);
-		BufferHandle GetBufferHandle() const { return m_bufferHandle; }
+		void			CopyData(void const* data, size_t count, size_t stride);
+		BufferHandle	GetBufferHandle() const { return m_bufferHandle; }
+		size_t			GetStride() const { return m_bufferStride; }
 
 	protected:
 		VertexBuffer(size_t size, size_t stride);

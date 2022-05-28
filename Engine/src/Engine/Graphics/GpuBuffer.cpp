@@ -4,7 +4,7 @@ void Graphics::VertexBuffer::CopyData(void const* data, size_t count, size_t str
 {
 	glGenBuffers(1, &m_bufferHandle);
 	glBindBuffer(GL_ARRAY_BUFFER, m_bufferHandle);
-	glBufferData(GL_ARRAY_BUFFER, stride, data, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, count * stride, data, GL_STATIC_DRAW);
 }
 
 Graphics::VertexBuffer::VertexBuffer(size_t size, size_t stride)

@@ -35,16 +35,6 @@ void Shader::CheckError()
 	}
 }
 
-std::string Shader::Code() const
-{
-	return shaderSourceCode;
-}
-
-size_t Shader::Size() const
-{
-	return shaderSourceCode.size();
-}
-
 void VertexShader::Compile()
 {
 	handle = glCreateShader(GL_VERTEX_SHADER);
@@ -63,4 +53,21 @@ void PixelShader::Compile()
 	glCompileShader(handle);
 
 	CheckError();
+}
+
+void ShaderProgram::Link()
+{
+	handle = glCreateProgram();
+	if (linkedVS) glAttachShader(handle, linkedVS->GetHandle());
+	if (linkedPS) glAttachShader(handle, linkedPS->GetHandle());
+	glLinkProgram(handle);
+
+	// Error check
+	/*
+		glGetProgramiv(shaderProgram, GL_LINK_STATUS, &success);
+		if(!success) {
+			glGetProgramInfoLog(shaderProgram, 512, NULL, infoLog);
+			...
+		}
+	*/
 }

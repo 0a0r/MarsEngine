@@ -3,6 +3,8 @@
 #include "Engine/Graphics/RenderContext.hpp"
 #include <string>
 
+class Shader;
+
 struct ShaderConfig
 {
 	std::wstring	shaderName;
@@ -21,6 +23,29 @@ enum eShaderType
 	// RAYTRACING_SHADER
 };
 
+struct ShaderProgram
+{
+	// GL: link both shaders using gl api
+	// DX12: link both shaders in pso
+
+	ShaderProgram(
+		Shader const* vs,
+		Shader const* ps = nullptr
+	)
+		: linkedVS(vs), linkedPS(ps)
+	{
+		Link();
+	}
+
+	void Link();
+
+	Shader const* linkedVS = nullptr;
+	Shader const* linkedPS = nullptr;
+
+	// GL handle
+	GLuint handle;
+};
+
 struct ShaderHandle
 {
 	// GL
@@ -33,8 +58,9 @@ struct ShaderHandle
 class Shader
 {
 public:
-	std::string		Code() const;
-	size_t			Size() const;
+	std::string		Code() const { return shaderSourceCode; }
+	size_t			Size() const { return shaderSourceCode.size(); }
+	ShaderHandle	GetHandle() const { return handle; }
 
 public:
 	Shader(ShaderConfig _config);

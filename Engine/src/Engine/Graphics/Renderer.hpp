@@ -31,7 +31,6 @@ namespace EngineSystem
 
 	public:
 		void ClearScreen(Rgba8 const& clearColor);
-		void SetRenderContext(Graphics::RenderContext const& context);
 		
 	private:
 		RendererConfig config;

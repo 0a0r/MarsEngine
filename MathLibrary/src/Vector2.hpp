@@ -7,6 +7,7 @@ namespace Math
 		float x = 0.f, y = 0.f;
 
 		Vector2() {}
+		Vector2(float _x, float _y);
 		Vector2(Vector2 const& copyFrom);
 		~Vector2() {}
 

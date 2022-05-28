@@ -2,6 +2,9 @@
 
 namespace Math
 {
+	Vector2::Vector2(float _x, float _y)
+		: x(_x), y(_y) {}
+
 	Vector2::Vector2(Vector2 const& copyFrom)
 		: x(copyFrom.x), y(copyFrom.y) {}
 

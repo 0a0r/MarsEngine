@@ -3,9 +3,9 @@
 #include "mathpch.h"
 #include "Engine/Graphics/Rgba.hpp"
 
-struct alignas(16) Vertex
+struct Vertex
 {
 	Math::Vector3 position; // P
-	Rgba8 color; // C
-	Math::Vector2 uvCoords; // U
+	// Rgba8 color; // C
+	Math::Vector2 uv0; // U
 };
