@@ -4,6 +4,10 @@
 #include "Engine/Window/Window.hpp"
 #include "Engine/Graphics/Renderer.hpp"
 
+EngineSystem::Window& g_window = EngineSystem::Window::GetInstance();
+EngineSystem::Renderer& g_renderer = EngineSystem::Renderer::GetInstance();
+EngineSystem::AssetManager& g_assetManager = EngineSystem::AssetManager::GetInstance();
+
 void EngineSystem::InitializeAllEngineSystems()
 {
 	// #ToDo: User-defined
@@ -12,35 +16,35 @@ void EngineSystem::InitializeAllEngineSystems()
 	WindowConfig wc;
 	wc.clientAspect = 2.0f;
 	wc.windowTitle = "Default";
-	Window::GetInstance().Initialize(wc);
+	g_window.Initialize(wc);
 	
 	// Renderer (Must after Window initialization)
 	RendererConfig rc;
-	Renderer::GetInstance().Initialize(rc);
+	g_renderer.Initialize(rc);
 }
 
 void EngineSystem::StartupAllEngineSystems()
 {
-	AssetManager::GetInstance().Startup();
-	Window::GetInstance().Startup();
-	Renderer::GetInstance().Startup();
+	g_assetManager.Startup();
+	g_window.Startup();
+	g_renderer.Startup();
 }
 
 void EngineSystem::ShutdownAllEngineSystems()
 {
-	Renderer::GetInstance().Shutdown();
-	Window::GetInstance().Shutdown();
-	AssetManager::GetInstance().Shutdown();
+	g_renderer.Shutdown();
+	g_window.Shutdown();
+	g_assetManager.Shutdown();
 }
 
 void EngineSystem::BeginFrameAllEngineSystems()
 {
-	Window::GetInstance().BeginFrame();
-	Renderer::GetInstance().BeginFrame();
+	g_window.BeginFrame();
+	g_renderer.BeginFrame();
 }
 
 void EngineSystem::EndFrameAllEngineSystems()
 {
-	Window::GetInstance().EndFrame();
-	Renderer::GetInstance().EndFrame();
+	g_window.EndFrame();
+	g_renderer.EndFrame();
 }
