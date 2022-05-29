@@ -45,16 +45,13 @@
     <ClCompile Include="src\Engine\Graphics\Shader.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\Core\FileUtils.cpp">
-      <Filter>Core</Filter>
-    </ClCompile>
     <ClCompile Include="src\Engine\Assets\AssetManager.cpp">
       <Filter>Asset</Filter>
     </ClCompile>
     <ClCompile Include="src\Engine\Graphics\Rgba.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\Core\StringUtils.cpp">
+    <ClCompile Include="src\Engine\Core\Utility.cpp">
       <Filter>Core</Filter>
     </ClCompile>
   </ItemGroup>
@@ -104,13 +101,10 @@
     <ClInclude Include="src\Engine\Graphics\Shader.hpp">
       <Filter>Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\Core\FileUtils.hpp">
-      <Filter>Core</Filter>
-    </ClInclude>
     <ClInclude Include="src\Engine\Assets\AssetManager.hpp">
       <Filter>Asset</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\Core\StringUtils.hpp">
+    <ClInclude Include="src\Engine\Core\Utility.hpp">
       <Filter>Core</Filter>
     </ClInclude>
   </ItemGroup>

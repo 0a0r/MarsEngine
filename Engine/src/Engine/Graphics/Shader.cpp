@@ -1,5 +1,5 @@
 #include "Engine/Graphics/Shader.hpp"
-#include "Engine/Core/FileUtils.hpp"
+#include "Engine/Core/Utility.hpp"
 
 Shader::Shader(ShaderConfig _config)
 	: config(_config)
