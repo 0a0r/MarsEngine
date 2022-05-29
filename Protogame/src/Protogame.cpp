@@ -1,7 +1,12 @@
 #include "Protogame.hpp"
 
+#include "mathpch.h"
+
 #include "Engine/Window/Window.hpp"
 #include "Engine/Graphics/RenderContext.hpp"
+#include "Engine/Graphics/Vertex.hpp"
+#include "Engine/Graphics/GpuBuffer.hpp"
+#include "Engine/Graphics/Shader.hpp"
 #include "Engine/Assets/AssetManager.hpp"
 
 CREATE_APP(Protogame)
@@ -26,17 +31,21 @@ void Protogame::Update()
 
 void Protogame::RenderScene() const
 {
-	static float vertices[] = {
-		-0.5f, -0.5f, 0.0f,
-		 0.5f, -0.5f, 0.0f,
-		 0.0f,  0.5f, 0.0f
+	static Vertex vertices[] = {
+		Vertex { Math::Vector3(-0.5f, -0.5f, 0.0f), Math::Vector2(0.f, 0.f) },
+		Vertex { Math::Vector3(0.5f, -0.5f, 0.0f), Math::Vector2(0.f, 0.f) },
+		Vertex { Math::Vector3(0.0f,  0.5f, 0.0f), Math::Vector2(0.f, 0.f) }
 	};
 
-	//Graphics::RenderContext* context = EngineSystem::Renderer::GetInstance().CreateRenderContext();
+	EngineSystem::Renderer::GetInstance().ClearScreen(Rgba8(125, 125, 255, 255));
 
-	//context->BindShader()
+	Graphics::RenderContext* context = EngineSystem::Renderer::GetInstance().CreateRenderContext();
+	auto vbo = context->CreateVertexBuffer(sizeof(vertices), sizeof(Vertex));
+	context->BindVertexBufferData(*vbo, vertices, 3, sizeof(Vertex));
+	context->BindShader(*sh);
+	context->DrawVertexBuffer(*vbo);
 
-	//delete context;
+	delete context;
 }
 
 void Protogame::DrawFirstTriangle()

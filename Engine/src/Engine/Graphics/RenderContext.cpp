@@ -24,14 +24,17 @@ void Graphics::RenderContext::DrawVertexBuffer(VertexBuffer const& vbo)
 {
 	unsigned int VAO;
 	glGenVertexArrays(1, &VAO);
+	glBindVertexArray(VAO);
+
+	vbo.Link();
 
 	// Position
-	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, vbo.GetStride(), (void*)offsetof(Vertex, position));
+	glEnableVertexAttribArray(0);
 	
 	// UV
-	glEnableVertexAttribArray(1);
 	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, vbo.GetStride(), (void*)offsetof(Vertex, uv0));
+	glEnableVertexAttribArray(1);
 
 	glBindVertexArray(VAO);
 	glDrawArrays(GL_TRIANGLES, 0, 3);

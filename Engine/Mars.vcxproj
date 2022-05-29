@@ -28,6 +28,7 @@
     <ClCompile Include="src\Engine\Graphics\GraphicsCommon.cpp" />
     <ClCompile Include="src\Engine\Graphics\RenderContext.cpp" />
     <ClCompile Include="src\Engine\Graphics\Renderer.cpp" />
+    <ClCompile Include="src\Engine\Graphics\Rgba.cpp" />
     <ClCompile Include="src\Engine\Graphics\Shader.cpp" />
     <ClCompile Include="src\Engine\Window\Window.cpp" />
   </ItemGroup>

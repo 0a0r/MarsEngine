@@ -2,7 +2,7 @@
 
 #include "Engine/Core/GameCore.hpp"
 
-class ShaderProgram;
+struct ShaderProgram;
 
 class Protogame : public GameCore::IGameApp
 {

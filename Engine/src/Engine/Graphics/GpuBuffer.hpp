@@ -23,6 +23,7 @@ namespace Graphics
 		void			CopyData(void const* data, size_t count, size_t stride);
 		BufferHandle	GetBufferHandle() const { return m_bufferHandle; }
 		size_t			GetStride() const { return m_bufferStride; }
+		void			Link() const;
 
 	protected:
 		VertexBuffer(size_t size, size_t stride);
@@ -33,5 +34,7 @@ namespace Graphics
 		size_t			m_bufferSize;
 		size_t			m_bufferStride;
 		BufferHandle	m_bufferHandle;
+
+		void const*		m_bufferData = nullptr;
 	};
 }

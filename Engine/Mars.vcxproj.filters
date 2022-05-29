@@ -51,6 +51,9 @@
     <ClCompile Include="src\Engine\Assets\AssetManager.cpp">
       <Filter>Asset</Filter>
     </ClCompile>
+    <ClCompile Include="src\Engine\Graphics\Rgba.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Engine\Window\Window.hpp">
