@@ -23,6 +23,7 @@
     <ClCompile Include="src\Engine\Core\EngineSystem.cpp" />
     <ClCompile Include="src\Engine\Core\FileUtils.cpp" />
     <ClCompile Include="src\Engine\Core\GameCore.cpp" />
+    <ClCompile Include="src\Engine\Core\StringUtils.cpp" />
     <ClCompile Include="src\Engine\Graphics\glad.c" />
     <ClCompile Include="src\Engine\Graphics\GpuBuffer.cpp" />
     <ClCompile Include="src\Engine\Graphics\GraphicsCommon.cpp" />
@@ -39,6 +40,7 @@
     <ClInclude Include="src\Engine\Core\EngineSystem.hpp" />
     <ClInclude Include="src\Engine\Core\FileUtils.hpp" />
     <ClInclude Include="src\Engine\Core\GameCore.hpp" />
+    <ClInclude Include="src\Engine\Core\StringUtils.hpp" />
     <ClInclude Include="src\Engine\Graphics\GpuBuffer.hpp" />
     <ClInclude Include="src\Engine\Graphics\GraphicsCommon.hpp" />
     <ClInclude Include="src\Engine\Graphics\InternalDX11.hpp" />

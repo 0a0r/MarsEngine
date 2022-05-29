@@ -54,6 +54,9 @@
     <ClCompile Include="src\Engine\Graphics\Rgba.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="src\Engine\Core\StringUtils.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Engine\Window\Window.hpp">
@@ -106,6 +109,9 @@
     </ClInclude>
     <ClInclude Include="src\Engine\Assets\AssetManager.hpp">
       <Filter>Asset</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\Core\StringUtils.hpp">
+      <Filter>Core</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
