@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Engine/Core/EngineSystem.hpp"
-
 #include "Engine/Graphics/Shader.hpp"
 
 #include <string>

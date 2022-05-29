@@ -2,7 +2,12 @@
 
 void EngineSystem::AssetManager::Shutdown()
 {
-	
+	for (auto& s : loadedShader)
+	{
+		delete s.second;
+		s.second = nullptr;
+	}
+	loadedShader.clear();
 }
 
 Shader* EngineSystem::AssetManager::CreateShader(eShaderType type, std::wstring const& name, const char* filePath, std::string entryPoint, bool isInternal)

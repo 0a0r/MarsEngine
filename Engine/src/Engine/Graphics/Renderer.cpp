@@ -86,3 +86,8 @@ void EngineSystem::Renderer::ClearScreen(Rgba8 const& clearColor)
 
 	delete colFloat4;
 }
+
+Graphics::RenderContext* EngineSystem::Renderer::CreateRenderContext()
+{
+	return new Graphics::RenderContext();
+}

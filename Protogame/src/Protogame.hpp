@@ -2,6 +2,8 @@
 
 #include "Engine/Core/GameCore.hpp"
 
+class ShaderProgram;
+
 class Protogame : public GameCore::IGameApp
 {
 public:
@@ -13,4 +15,7 @@ public:
 	virtual void RenderScene() const override;
 
 	void DrawFirstTriangle();
+
+protected:
+	ShaderProgram* sh = nullptr;
 };

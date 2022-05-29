@@ -4,10 +4,10 @@
 #include "Engine/Core/EngineConfig.h"
 #include <string>
 
+#include "mathpch.h"
+
 #define WIN32_LEAN_AND_MEAN		// Always #define this before #including <windows.h>
 #include <windows.h>
-
-#include "mathpch.h"
 
 namespace EngineSystem
 {
@@ -44,3 +44,16 @@ namespace EngineSystem
 	};
 }
 
+#define CREATE_APP(app_class) \
+	int WINAPI WinMain(HINSTANCE applicationInstanceHandle, HINSTANCE, LPSTR commandLineString, int) \
+	{ \
+		if (GameCore::g_App) \
+		{ \
+			delete GameCore::g_App; \
+		} \
+		GameCore::g_App = new app_class(); \
+		GameCore::RunApp(*GameCore::g_App); \
+		delete GameCore::g_App; \
+		GameCore::g_App = nullptr; \
+		return 0; \
+	}

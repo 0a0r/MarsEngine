@@ -1,11 +1,13 @@
 #include "Engine/Core/EngineSystem.hpp"
 
+#include "Engine/Assets/AssetManager.hpp"
 #include "Engine/Window/Window.hpp"
 #include "Engine/Graphics/Renderer.hpp"
 
 void EngineSystem::InitializeAllEngineSystems()
 {
 	// #ToDo: User-defined
+	
 	// Window
 	WindowConfig wc;
 	wc.clientAspect = 2.0f;
@@ -19,14 +21,16 @@ void EngineSystem::InitializeAllEngineSystems()
 
 void EngineSystem::StartupAllEngineSystems()
 {
+	AssetManager::GetInstance().Startup();
 	Window::GetInstance().Startup();
 	Renderer::GetInstance().Startup();
 }
 
 void EngineSystem::ShutdownAllEngineSystems()
 {
-	Window::GetInstance().Shutdown();
 	Renderer::GetInstance().Shutdown();
+	Window::GetInstance().Shutdown();
+	AssetManager::GetInstance().Shutdown();
 }
 
 void EngineSystem::BeginFrameAllEngineSystems()
