@@ -13,6 +13,9 @@
     <Filter Include="Graphics\Internal">
       <UniqueIdentifier>{12fc6347-3b3a-4541-b523-c79f2704165c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Asset">
+      <UniqueIdentifier>{16636fa2-a3db-46ea-9560-bcd3bb22b820}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Engine\Window\Window.cpp">
@@ -44,6 +47,9 @@
     </ClCompile>
     <ClCompile Include="src\Engine\Core\FileUtils.cpp">
       <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\Assets\AssetManager.cpp">
+      <Filter>Asset</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -94,6 +100,9 @@
     </ClInclude>
     <ClInclude Include="src\Engine\Core\FileUtils.hpp">
       <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\Assets\AssetManager.hpp">
+      <Filter>Asset</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

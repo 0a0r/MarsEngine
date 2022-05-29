@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Engine\Assets\AssetManager.cpp" />
     <ClCompile Include="src\Engine\Core\EngineSystem.cpp" />
     <ClCompile Include="src\Engine\Core\FileUtils.cpp" />
     <ClCompile Include="src\Engine\Core\GameCore.cpp" />
@@ -31,6 +32,7 @@
     <ClCompile Include="src\Engine\Window\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Engine\Assets\AssetManager.hpp" />
     <ClInclude Include="src\Engine\Core\EngineCommon.hpp" />
     <ClInclude Include="src\Engine\Core\EngineConfig.h" />
     <ClInclude Include="src\Engine\Core\EngineSystem.hpp" />

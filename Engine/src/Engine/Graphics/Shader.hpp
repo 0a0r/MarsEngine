@@ -5,14 +5,6 @@
 
 class Shader;
 
-struct ShaderConfig
-{
-	std::wstring	shaderName;
-	std::string		shaderPath;
-	std::string		shaderEntryPoint;
-	bool			isInternal;
-};
-
 enum eShaderType
 {
 	VERTEX_SHADER,
@@ -21,6 +13,14 @@ enum eShaderType
 	PIXEL_SHADER,
 	// COMPUTE_SHADER,
 	// RAYTRACING_SHADER
+};
+
+struct ShaderConfig
+{
+	std::wstring	shaderName;
+	std::string		shaderPath;
+	std::string		shaderEntryPoint;
+	bool			isInternal;
 };
 
 struct ShaderProgram
