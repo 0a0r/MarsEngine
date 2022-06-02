@@ -30,6 +30,7 @@
     <ClCompile Include="src\Engine\Graphics\Renderer.cpp" />
     <ClCompile Include="src\Engine\Graphics\Rgba.cpp" />
     <ClCompile Include="src\Engine\Graphics\Shader.cpp" />
+    <ClCompile Include="src\Engine\Thread\JobSystem.cpp" />
     <ClCompile Include="src\Engine\Window\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -38,6 +39,7 @@
     <ClInclude Include="src\Engine\Core\EngineConfig.h" />
     <ClInclude Include="src\Engine\Core\EngineSystem.hpp" />
     <ClInclude Include="src\Engine\Core\GameCore.hpp" />
+    <ClInclude Include="src\Engine\Core\RingBuffer.hpp" />
     <ClInclude Include="src\Engine\Core\Utility.hpp" />
     <ClInclude Include="src\Engine\Graphics\GpuBuffer.hpp" />
     <ClInclude Include="src\Engine\Graphics\GraphicsCommon.hpp" />
@@ -49,6 +51,7 @@
     <ClInclude Include="src\Engine\Graphics\Rgba.hpp" />
     <ClInclude Include="src\Engine\Graphics\Shader.hpp" />
     <ClInclude Include="src\Engine\Graphics\Vertex.hpp" />
+    <ClInclude Include="src\Engine\Thread\JobSystem.hpp" />
     <ClInclude Include="src\Engine\Window\Window.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

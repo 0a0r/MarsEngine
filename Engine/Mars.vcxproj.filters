@@ -16,6 +16,9 @@
     <Filter Include="Asset">
       <UniqueIdentifier>{16636fa2-a3db-46ea-9560-bcd3bb22b820}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Thread">
+      <UniqueIdentifier>{8f42cc82-915e-44c3-9a49-990a33155d64}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Engine\Window\Window.cpp">
@@ -53,6 +56,9 @@
     </ClCompile>
     <ClCompile Include="src\Engine\Core\Utility.cpp">
       <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\Thread\JobSystem.cpp">
+      <Filter>Thread</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -106,6 +112,12 @@
     </ClInclude>
     <ClInclude Include="src\Engine\Core\Utility.hpp">
       <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\Core\RingBuffer.hpp">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\Thread\JobSystem.hpp">
+      <Filter>Thread</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
