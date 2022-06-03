@@ -1,5 +1,6 @@
-#include "Engine/Core/EngineSystem.hpp"
+#include "EngineSystem.hpp"
 
+#include "Engine/Thread/JobSystem.hpp"
 #include "Engine/Assets/AssetManager.hpp"
 #include "Engine/Window/Window.hpp"
 #include "Engine/Graphics/Renderer.hpp"
@@ -10,8 +11,8 @@ EngineSystem::AssetManager& g_assetManager = EngineSystem::AssetManager::GetInst
 
 void EngineSystem::InitializeAllEngineSystems()
 {
+	JobSystem::Initialize();
 	// #ToDo: User-defined
-	
 	// Window
 	WindowConfig wc;
 	wc.clientAspect = 2.0f;
@@ -35,6 +36,8 @@ void EngineSystem::ShutdownAllEngineSystems()
 	g_renderer.Shutdown();
 	g_window.Shutdown();
 	g_assetManager.Shutdown();
+
+	JobSystem::Destroy();
 }
 
 void EngineSystem::BeginFrameAllEngineSystems()
