@@ -1,40 +1,25 @@
 #pragma once
 
-#include "Engine/Graphics/RenderContext.hpp"
-
 namespace Graphics
 {
-	struct BufferHandle
+	class VertexBufferBase
 	{
-		// GL
-		GLuint* operator&() noexcept { return &handle; }
-		operator GLuint() const { return handle; }
-		GLuint handle = (GLuint)-1;
-	};
-}
-
-namespace Graphics
-{
-	class VertexBuffer
-	{
-		friend class RenderContext;
-
 	public:
-		void			CopyData(void const* data, size_t count, size_t stride);
-		BufferHandle	GetBufferHandle() const { return m_bufferHandle; }
-		size_t			GetStride() const { return m_bufferStride; }
-		void			Link() const;
+		VertexBufferBase() {}
+		VertexBufferBase(VertexBufferBase const& copyFrom) = delete;
+		virtual ~VertexBufferBase() {}
+
+		size_t			GetSize() const { return mSize; }
+		size_t			GetCount() const { return mCount; }
+		size_t			GetStride() const { return mStride; }
+		void const*		GetData() const { return pData; }
+
+		virtual void	CopyData(void const* data, size_t count, size_t stride);
 
 	protected:
-		VertexBuffer(size_t size, size_t stride);
-		VertexBuffer(VertexBuffer const& copyFrom) = delete;
-		virtual ~VertexBuffer();
-
-	protected:
-		size_t			m_bufferSize;
-		size_t			m_bufferStride;
-		BufferHandle	m_bufferHandle;
-
-		void const*		m_bufferData = nullptr;
+		size_t			mSize	= 0;
+		size_t			mStride = 0;
+		size_t			mCount	= 0;
+		void const*		pData	= nullptr;
 	};
 }

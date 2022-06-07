@@ -1,43 +1,69 @@
 #pragma once
 
+#include <map>
+#include <vector>
+
 #include "Engine/Core/EngineSystem.hpp"
 #include "Engine/Core/EngineConfig.h"
 
-// #ToDo: Fix the logic in here
-#include "Engine/Graphics/InternalGL.hpp"
+#include "Rgba.hpp"
 
-struct Rgba8;
+class WindowContext;
 
 namespace Graphics
 {
-	class RenderContext;
-}
-
-namespace EngineSystem
-{
-	class Renderer : public ISystem<Renderer>
+	enum eRendererType
 	{
-		friend class ISystem<Renderer>;
-
-	public:
-		void Initialize(RendererConfig const& _config);
-		void Startup() override;
-		void BeginFrame() override;
-		void EndFrame() override;
-		void Shutdown() override;
-
-	public:
-		void Present();
-
-	public:
-		void ClearScreen(Rgba8 const& clearColor);
-		Graphics::RenderContext* CreateRenderContext();
-		
-	private:
-		RendererConfig config;
-		int displayWidth;
-		int displayHeight;
-
-		GLFWwindow* glWindow = nullptr;
+		GL,
+		DX11,
+		DX12,
+		VULKAN
 	};
+
+	class Renderer;
+	extern std::map<eRendererType, Renderer*> gRenderers;
+	extern WindowContext* gWindow;
+	extern Renderer* gRenderer;
+
+	void Initialize();
+	void Startup();
+	void BeginFrame();
+	void EndFrame();
+	void Shutdown();
+
+	class VertexBufferBase;
+	struct RenderData
+	{
+		std::vector<VertexBufferBase*> vbs;
+	};
+
+	class Renderer
+	{
+	public:
+		Renderer(WindowContext* wc);
+		virtual ~Renderer() {}
+
+	public:
+		virtual void Startup() {}
+		virtual void BeginFrame() {}
+		virtual void EndFrame() {}
+		virtual void Shutdown() {}
+		virtual void Present() {}
+
+	public:
+		virtual void ClearScreen(Rgba8 const& clearColor) = 0;
+		// Draw
+		virtual void Draw(RenderData const& rd) = 0;
+
+ 		void SetWindowContext(WindowContext* wc) { mWindow = wc; }
+		WindowContext* GetWindowContext() const { return mWindow; }
+
+	protected:
+		WindowContext*	mWindow = nullptr;
+		unsigned int	mDisplayWidth;
+		unsigned int	mDisplayHeight;
+	};
+	
+	// typedef std::map<std::string, Renderer*>
+	// extern
 }

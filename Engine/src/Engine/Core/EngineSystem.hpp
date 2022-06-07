@@ -2,23 +2,11 @@
 
 namespace EngineSystem
 {
-	class Window;
-	class Renderer;
-	class AssetManager;
-}
-
-extern EngineSystem::Window& g_window;
-extern EngineSystem::Renderer& g_renderer;
-extern EngineSystem::AssetManager& g_assetManager;
-
-namespace EngineSystem
-{
 	void InitializeAllEngineSystems();
 	void StartupAllEngineSystems();
-	void ShutdownAllEngineSystems();
-
 	void BeginFrameAllEngineSystems();
 	void EndFrameAllEngineSystems();
+	void ShutdownAllEngineSystems();
 }
 
 namespace EngineSystem

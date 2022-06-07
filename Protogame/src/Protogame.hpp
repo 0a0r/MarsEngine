@@ -2,7 +2,11 @@
 
 #include "Engine/Core/GameCore.hpp"
 
-struct ShaderProgram;
+namespace Graphics
+{
+	class GLShaderProgram;
+	class GLVertexBuffer;
+}
 
 class Protogame : public GameCore::IGameApp
 {
@@ -14,8 +18,9 @@ public:
 	virtual void Update() override;
 	virtual void RenderScene() const override;
 
-	void DrawFirstTriangle();
+	void DrawFirstTriangle() const;
 
 protected:
-	ShaderProgram* sh = nullptr;
+	Graphics::GLShaderProgram* sh = nullptr;
+	Graphics::GLVertexBuffer* testVBO = nullptr;
 };

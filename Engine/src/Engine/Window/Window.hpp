@@ -9,40 +9,34 @@
 #define WIN32_LEAN_AND_MEAN		// Always #define this before #including <windows.h>
 #include <windows.h>
 
-namespace EngineSystem
+class WindowContext
 {
-	class Window : public ISystem<Window>
-	{
-		friend class ISystem<Window>;
+public:
+	WindowContext() {}
+	~WindowContext() {}
 
-	public:
-		void Initialize(WindowConfig const& _config);
-		void Startup() override;
-		void BeginFrame() override;
-		void Shutdown() override;
+	void Initialize(WindowConfig const& _config);
+	void Startup();
+	void BeginFrame();
+	void Shutdown();
 
-		int GetWindowWidth() const { return m_windowWidth; }
-		int GetWindowHeight() const { return m_windowHeight; }
-		std::string GetWindowTitle() const { return config.windowTitle; }
-		void* GetHWND() const { return m_hwnd; }
+	unsigned int GetWindowWidth() const { return mWindowWidth; }
+	unsigned int GetWindowHeight() const { return mWindowHeight; }
+	std::string GetWindowTitle() const { return mConfig.windowTitle; }
+	void* GetHWND() const { return pHwnd; }
 
-	protected:
-		void CreateOSWindow();
-		void RunMessagePump();
+protected:
+	void CreateOSWindow();
+	void RunMessagePump();
 
-	private:
-		Window() {}
-		~Window() {}
+private:
+	WindowConfig	mConfig;
+	void*			pHwnd = nullptr;
+	void*			pDeviceContext = nullptr;
 
-	private:
-		WindowConfig	config;
-		void*			m_hwnd = nullptr;
-		void*			m_deviceContext = nullptr;
-
-		int				m_windowWidth;
-		int				m_windowHeight;
-	};
-}
+	unsigned int	mWindowWidth;
+	unsigned int	mWindowHeight;
+};
 
 #define CREATE_APP(app_class) \
 	int WINAPI WinMain(HINSTANCE applicationInstanceHandle, HINSTANCE, LPSTR commandLineString, int) \

@@ -1,73 +1,30 @@
-#include "Engine/Graphics/Shader.hpp"
-#include "Engine/Core/Utility.hpp"
+#include "Shader.hpp"
 
-Shader::Shader(ShaderConfig _config)
-	: config(_config)
+namespace Graphics
 {
-	Create();
-}
+	std::map<std::wstring, Shader*> gShaderMaps;
 
-Shader::~Shader()
-{
-	Destroy();
-}
-
-void Shader::Create()
-{
-	FileReadToString(shaderSourceCode, config.shaderPath);
-
-}
-
-void Shader::Destroy()
-{
-	glDeleteShader(handle);
-}
-
-void Shader::CheckError()
-{
-	int success;
-	std::string infoLog;
-
-	glGetShaderiv(handle, GL_COMPILE_STATUS, &success);
-	if (!success)
+	void RegisterShader(std::wstring const& name, Shader* shader)
 	{
-		glGetShaderInfoLog(handle, 512, NULL, const_cast<char*>(infoLog.c_str()));
+		gShaderMaps.emplace(std::make_pair(name, shader));
 	}
-}
 
-void VertexShader::Compile()
-{
-	handle = glCreateShader(GL_VERTEX_SHADER);
-	const char* code = shaderSourceCode.c_str();
-	glShaderSource(handle, 1, &code, NULL);
-	glCompileShader(handle);
+	Shader* GetShader(std::wstring const& name)
+	{
+		return gShaderMaps[name];
+	}
 
-	CheckError();
-}
-
-void PixelShader::Compile()
-{
-	handle = glCreateShader(GL_FRAGMENT_SHADER);
-	const char* code = shaderSourceCode.c_str();
-	glShaderSource(handle, 1, &code, NULL);
-	glCompileShader(handle);
-
-	CheckError();
-}
-
-void ShaderProgram::Link()
-{
-	handle = glCreateProgram();
-	if (linkedVS) glAttachShader(handle, linkedVS->GetHandle());
-	if (linkedPS) glAttachShader(handle, linkedPS->GetHandle());
-	glLinkProgram(handle);
-
-	// Error check
-	/*
-		glGetProgramiv(shaderProgram, GL_LINK_STATUS, &success);
-		if(!success) {
-			glGetProgramInfoLog(shaderProgram, 512, NULL, infoLog);
-			...
+	void RemoveAllRegisteredShaders()
+	{
+		for (auto& p : gShaderMaps)
+		{
+			if (p.second)
+			{
+				delete p.second;
+				p.second = nullptr;
+			}
 		}
-	*/
+
+		gShaderMaps.clear();
+	}
 }

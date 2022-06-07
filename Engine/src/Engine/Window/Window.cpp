@@ -18,30 +18,31 @@ LRESULT CALLBACK WinProc(HWND windowHandle, UINT wmMessageCode, WPARAM wParam, L
 	return DefWindowProc(windowHandle, wmMessageCode, wParam, lParam);
 }
 
-void EngineSystem::Window::Initialize(WindowConfig const& _config)
+void WindowContext::Initialize(WindowConfig const& _config)
 {
-	config = _config;
-}
+	mConfig = _config;
 
-void EngineSystem::Window::Startup()
-{
 	// Create OS window by native Win32 window
 	CreateOSWindow();
 }
 
-void EngineSystem::Window::BeginFrame()
+void WindowContext::Startup()
+{
+}
+
+void WindowContext::BeginFrame()
 {
 	RunMessagePump();
 }
 
-void EngineSystem::Window::Shutdown()
+void WindowContext::Shutdown()
 {
 }
 
-void EngineSystem::Window::CreateOSWindow()
+void WindowContext::CreateOSWindow()
 {
 	HMODULE applicationInstanceHandle = GetModuleHandle(NULL);
-	float clientAspect = config.clientAspect;
+	float clientAspect = mConfig.clientAspect;
 
 	// Define a window style/class
 	WNDCLASSEX windowClassDescription;
@@ -83,8 +84,8 @@ void EngineSystem::Window::CreateOSWindow()
 		clientWidth = clientHeight * clientAspect;
 	}
 
-	m_windowWidth = (int)clientWidth;
-	m_windowHeight = (int)clientHeight;
+	mWindowWidth = (unsigned int)clientWidth;
+	mWindowHeight = (unsigned int)clientHeight;
 
 	// Calculate client rect bounds by centering the client area
 	float clientMarginX = 0.5f * (desktopWidth - clientWidth);
@@ -100,7 +101,7 @@ void EngineSystem::Window::CreateOSWindow()
 	AdjustWindowRectEx(&windowRect, windowStyleFlags, FALSE, windowStyleExFlags);
 
 	WCHAR windowTitle[1024];
-	MultiByteToWideChar(GetACP(), 0, config.windowTitle.c_str(), -1, windowTitle, sizeof(windowTitle) / sizeof(windowTitle[0]));
+	MultiByteToWideChar(GetACP(), 0, mConfig.windowTitle.c_str(), -1, windowTitle, sizeof(windowTitle) / sizeof(windowTitle[0]));
 	HWND hwnd = CreateWindowEx(
 		windowStyleExFlags,
 		windowClassDescription.lpszClassName,
@@ -123,11 +124,11 @@ void EngineSystem::Window::CreateOSWindow()
 	HCURSOR cursor	= LoadCursor(NULL, IDC_ARROW);
 	SetCursor(cursor);
 
-	m_hwnd = hwnd;
-	m_deviceContext = dc;
+	pHwnd = hwnd;
+	pDeviceContext = dc;
 }
 
-void EngineSystem::Window::RunMessagePump()
+void WindowContext::RunMessagePump()
 {
 	MSG queuedMessage;
 	while (true)

@@ -1,91 +1,70 @@
 #include "Engine/Graphics/Renderer.hpp"
-#include "Engine/Graphics/RenderContext.hpp"
 #include "Engine/Graphics/Rgba.hpp"
 #include "Engine/Window/Window.hpp"
 
-void EngineSystem::Renderer::Initialize(RendererConfig const& _config)
+#include "GLRenderer.hpp"
+#include "GLShader.hpp"
+
+namespace Graphics
 {
-	config = _config;
+	std::map<eRendererType, Renderer*> gRenderers;
+	WindowContext* gWindow = nullptr;
+	Renderer* gRenderer = nullptr;
 }
 
-void EngineSystem::Renderer::Startup()
+namespace Graphics
 {
-	// GL 3.3
-	glfwInit();
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-	// For Mac OS X
-	// glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-
-	displayWidth = Window::GetInstance().GetWindowWidth();
-	displayHeight = Window::GetInstance().GetWindowHeight();
-
-	glWindow = glfwCreateWindow(
-		displayWidth,
-		displayHeight,
-		Window::GetInstance().GetWindowTitle().c_str(),
-		NULL,
-		NULL
-	);
-
-	// #ToDo: Add error handle logic
-	if (glWindow == NULL)
+	void Initialize()
 	{
-		glfwTerminate();
-		return;
+		// Initialize window
+		WindowConfig winContext;
+		winContext.clientAspect = 2.0f;
+		winContext.windowTitle = "Default";
+		gWindow = new WindowContext();
+		gWindow->Initialize(winContext);
+
+		// Initialize GL renderer
+		gRenderers.emplace(std::make_pair(eRendererType::GL, new GLRenderer(gWindow)));
+	
+		// #ToDo: Initialize DX11 renderer
+
+		// #ToDo: Initialize DX12 renderer
+		
+		gRenderer = gRenderers[eRendererType::GL];
 	}
 
-	glfwMakeContextCurrent(glWindow);
-
-	// #ToDo: Add error handle logic
-	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+	void Graphics::Startup()
 	{
-		glfwTerminate();
-		return;
+		gWindow->Startup();
+		gRenderer->Startup();
 	}
 
-	glViewport(0, 0, displayWidth, displayHeight);
+	void Graphics::BeginFrame()
+	{
+		gWindow->BeginFrame();
+		gRenderer->BeginFrame();
+	}
 
-	// Using native Win32 window
-	HWND glHWND = glfwGetWin32Window(glWindow);
-	SetWindowLong(glHWND, GWL_STYLE, WS_VISIBLE);
-	MoveWindow(glHWND, 0, 0, displayWidth, displayHeight, TRUE);
-	SetParent(glHWND, static_cast<HWND>(Window::GetInstance().GetHWND()));
+	void Graphics::EndFrame()
+	{
+		// gWindow->EndFrame();
+		gRenderer->EndFrame();
+	}
+
+	void Graphics::Shutdown()
+	{
+		RemoveAllRegisteredShaders();
+		gRenderer->Shutdown();
+		gWindow->Shutdown();
+	}
 }
 
-void EngineSystem::Renderer::BeginFrame()
+namespace Graphics
 {
-}
-
-void EngineSystem::Renderer::EndFrame()
-{
-	Sleep(1);
-	Present();
-}
-
-void EngineSystem::Renderer::Shutdown()
-{
-	glfwTerminate();
-}
-
-void EngineSystem::Renderer::Present()
-{
-	glfwSwapBuffers(glWindow);
-	glfwPollEvents();
-}
-
-void EngineSystem::Renderer::ClearScreen(Rgba8 const& clearColor)
-{
-	float* colFloat4 = Rgba8::ConvertRgba8ToFloat4(clearColor);
-
-	glClearColor(colFloat4[0], colFloat4[1], colFloat4[2], colFloat4[3]);
-	glClear(GL_COLOR_BUFFER_BIT);
-
-	delete colFloat4;
-}
-
-Graphics::RenderContext* EngineSystem::Renderer::CreateRenderContext()
-{
-	return new Graphics::RenderContext();
+	Renderer::Renderer(WindowContext* wc)
+		: mWindow(wc)
+	{
+		mDisplayWidth = mWindow->GetWindowWidth();
+		mDisplayHeight = mWindow->GetWindowHeight();
+	}
 }

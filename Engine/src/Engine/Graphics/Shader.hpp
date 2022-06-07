@@ -1,109 +1,73 @@
 #pragma once
 
-#include "Engine/Graphics/RenderContext.hpp"
+#include <map>
 #include <string>
 
-class Shader;
-
-enum eShaderType
+namespace Graphics
 {
-	VERTEX_SHADER,
-	// HULL_SHADER,
-	GEOMETRY_SHADER,
-	PIXEL_SHADER,
-	// COMPUTE_SHADER,
-	// RAYTRACING_SHADER
-};
-
-struct ShaderConfig
-{
-	std::wstring	shaderName;
-	std::string		shaderPath;
-	std::string		shaderEntryPoint;
-	bool			isInternal;
-};
-
-struct ShaderProgram
-{
-	// GL: link both shaders using gl api
-	// DX12: link both shaders in pso
-
-	ShaderProgram(
-		Shader const* vs,
-		Shader const* ps = nullptr
-	)
-		: linkedVS(vs), linkedPS(ps)
+	enum eShaderType
 	{
-		Link();
-	}
+		VERTEX_SHADER,
+		// HULL_SHADER,
+		GEOMETRY_SHADER,
+		FRAGMENT_SHADER,
+		// COMPUTE_SHADER,
+		// RAYTRACING_SHADER
+	};
 
-	void Link();
-
-	Shader const* linkedVS = nullptr;
-	Shader const* linkedPS = nullptr;
-
-	// GL handle
-	GLuint handle;
-};
-
-struct ShaderHandle
-{
-	// GL
-	GLuint* operator&() noexcept { return &handle; }
-	void operator=(const GLuint& other) noexcept { handle = other; }
-	operator GLuint() const { return handle; }
-	GLuint handle = (GLuint)-1;
-};
-
-class Shader
-{
-public:
-	std::string		Code() const { return shaderSourceCode; }
-	size_t			Size() const { return shaderSourceCode.size(); }
-	ShaderHandle	GetHandle() const { return handle; }
-
-public:
-	Shader(ShaderConfig _config);
-	virtual ~Shader();
-
-protected:
-	void			Create();
-	void			Destroy();
-
-	void			CheckError();
-	virtual void	Compile() = 0;
-
-protected:
-	ShaderConfig config;
-	ShaderHandle handle;
-
-	std::string shaderSourceCode;
-	eShaderType type;
-};
-
-class VertexShader : public Shader
-{
-public:
-	VertexShader(ShaderConfig _config)
-		: Shader(_config)
+	struct ShaderConfig
 	{
-		type = eShaderType::VERTEX_SHADER;
-		Compile();
-	}
+		std::wstring	shaderName;
+		std::string		shaderPath;
+		std::string		shaderEntryPoint;
+		std::string		shaderSourceCode;
+		bool			isInternal;
+	};
 
-	virtual void Compile() override;
-};
-
-
-class PixelShader : public Shader
-{
-public:
-	PixelShader(ShaderConfig _config)
-		: Shader(_config)
+	class Shader;
+	// Alias: GpuProgram (High-level GPU program)
+	class ShaderProgram
 	{
-		type = eShaderType::PIXEL_SHADER;
-		Compile();
-	}
+	public:
+		// GL: link both shaders using gl api
+		// DX12: link both shaders in pso
+		ShaderProgram(
+			Shader const* _vs,
+			Shader const* _ps = nullptr
+		)
+			: vs(_vs), ps(_ps) {}
+		virtual ~ShaderProgram() {}
 
-	virtual void Compile() override;
-};
+		Shader const* vs = nullptr;
+		Shader const* ps = nullptr;
+	};
+
+	class Shader
+	{	
+	public:
+		std::string		GetCompiledCode() const { return mShaderCompiledCode; }
+		size_t			GetCompiledCodeSize() const { return mShaderCompiledCode.size(); }
+
+	public:
+		Shader(ShaderConfig const& config) : mConfig(config) {}
+		virtual			~Shader() {}
+
+	protected:
+		virtual void	CheckError() = 0;
+		virtual void	Compile() = 0;
+
+	protected:
+		ShaderConfig	mConfig;
+		std::string		mShaderCompiledCode;
+		eShaderType		mType;
+	};
+}
+
+namespace Graphics
+{
+	class Shader;
+	extern std::map<std::wstring, Shader*> gShaderMaps;
+	void	RegisterShader(std::wstring const& name, Shader* shader);
+	Shader* GetShader(std::wstring const& name);
+	void	RemoveAllRegisteredShaders();
+}
