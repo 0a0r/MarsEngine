@@ -11,7 +11,7 @@ namespace Graphics
 
 		if (_glvs && static_cast<GLVertexShader const*>(_glvs)) glAttachShader(mHandle, static_cast<GLVertexShader const*>(_glvs)->GetHandle());
 		if (_glps && static_cast<GLFragmentShader const*>(_glps)) glAttachShader(mHandle, static_cast<GLFragmentShader const*>(_glps)->GetHandle());
-		// glLinkProgram(handle);
+		glLinkProgram(mHandle);
 
 		// Error check
 		/*
