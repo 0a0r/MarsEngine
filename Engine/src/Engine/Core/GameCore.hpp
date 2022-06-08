@@ -1,6 +1,6 @@
 #pragma once
 
-struct WindowConfig;
+#include "Engine/Core/EngineConfig.h"
 
 namespace GameCore
 {

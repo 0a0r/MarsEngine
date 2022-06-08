@@ -14,7 +14,7 @@ namespace Graphics
 {
 	enum eRendererType
 	{
-		GL,
+		GL3,
 		DX11,
 		DX12,
 		VULKAN

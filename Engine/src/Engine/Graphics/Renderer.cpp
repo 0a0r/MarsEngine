@@ -7,9 +7,9 @@
 
 namespace Graphics
 {
-	std::map<eRendererType, Renderer*> gRenderers;
-	WindowContext* gWindow = nullptr;
-	Renderer* gRenderer = nullptr;
+	std::map<eRendererType, Renderer*>	gRenderers;
+	WindowContext*						gWindow = nullptr;
+	Renderer*							gRenderer = nullptr;
 }
 
 namespace Graphics
@@ -24,13 +24,13 @@ namespace Graphics
 		gWindow->Initialize(winContext);
 
 		// Initialize GL renderer
-		gRenderers.emplace(std::make_pair(eRendererType::GL, new GLRenderer(gWindow)));
+		gRenderers.emplace(std::make_pair(eRendererType::GL3, new GLRenderer(gWindow)));
 	
 		// #ToDo: Initialize DX11 renderer
 
 		// #ToDo: Initialize DX12 renderer
 		
-		gRenderer = gRenderers[eRendererType::GL];
+		gRenderer = gRenderers[eRendererType::GL3];
 	}
 
 	void Graphics::Startup()

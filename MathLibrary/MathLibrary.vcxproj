@@ -19,12 +19,16 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\MathCommon.hpp" />
     <ClInclude Include="src\mathpch.h" />
+    <ClInclude Include="src\Matrix44.hpp" />
     <ClInclude Include="src\Vector2.hpp" />
     <ClInclude Include="src\Vector3.hpp" />
     <ClInclude Include="src\Vector4.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\MathCommon.cpp" />
+    <ClCompile Include="src\Matrix44.cpp" />
     <ClCompile Include="src\Vector2.cpp" />
     <ClCompile Include="src\Vector3.cpp" />
     <ClCompile Include="src\Vector4.cpp" />

@@ -22,6 +22,7 @@
     <ClCompile Include="src\Engine\Core\EngineSystem.cpp" />
     <ClCompile Include="src\Engine\Core\GameCore.cpp" />
     <ClCompile Include="src\Engine\Core\Utility.cpp" />
+    <ClCompile Include="src\Engine\Graphics\Camera.cpp" />
     <ClCompile Include="src\Engine\Graphics\glad.c" />
     <ClCompile Include="src\Engine\Graphics\GLBuffer.cpp" />
     <ClCompile Include="src\Engine\Graphics\GLRenderer.cpp" />
@@ -42,6 +43,7 @@
     <ClInclude Include="src\Engine\Core\GameCore.hpp" />
     <ClInclude Include="src\Engine\Core\RingBuffer.hpp" />
     <ClInclude Include="src\Engine\Core\Utility.hpp" />
+    <ClInclude Include="src\Engine\Graphics\Camera.hpp" />
     <ClInclude Include="src\Engine\Graphics\GLBuffer.hpp" />
     <ClInclude Include="src\Engine\Graphics\GLInternal.hpp" />
     <ClInclude Include="src\Engine\Graphics\GLRenderer.hpp" />

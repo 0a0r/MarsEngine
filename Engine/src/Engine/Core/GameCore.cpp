@@ -1,5 +1,4 @@
-#include "Engine/Core/GameCore.hpp"
-#include "Engine/Core/EngineConfig.h"
+#include "GameCore.hpp"
 
 #include "Engine/Window/Window.hpp"
 

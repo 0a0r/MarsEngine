@@ -66,6 +66,9 @@
     <ClCompile Include="src\Engine\Graphics\RenderContext.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="src\Engine\Graphics\Camera.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Engine\Window\Window.hpp">
@@ -129,6 +132,9 @@
       <Filter>Graphics\GL</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\Graphics\RenderContext.hpp">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\Graphics\Camera.hpp">
       <Filter>Graphics</Filter>
     </ClInclude>
   </ItemGroup>
