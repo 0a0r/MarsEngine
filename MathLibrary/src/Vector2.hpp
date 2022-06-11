@@ -25,6 +25,7 @@ namespace Math
 
 		operator float* () { return mData; };
 		operator const float* () const { return static_cast<const float*>(mData); };
+		bool operator == (Vector2 const& rhs) const;
 
 		float	Length() const;
 		float	LengthSquared() const;

@@ -13,6 +13,11 @@ namespace Math
 		return sqrt(x * x + y * y);
 	}
 
+	bool Vector2::operator==(Vector2 const& rhs) const
+	{
+		return x == rhs.x && y == rhs.y;
+	}
+
 	float Math::Vector2::LengthSquared() const
 	{
 		return x * x + y * y;

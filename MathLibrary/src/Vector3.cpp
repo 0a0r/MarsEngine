@@ -8,6 +8,11 @@ namespace Math
 	Vector3::Vector3(Vector3 const& copyFrom)
 		: x(copyFrom.x), y(copyFrom.y), z(copyFrom.z) {}
 
+	bool Vector3::operator==(Vector3 const& rhs) const
+	{
+		return x == rhs.x && y == rhs.y && z == rhs.z;
+	}
+
 	float Math::Vector3::Length() const
 	{
 		return sqrt(x * x + y * y + z * z);

@@ -388,5 +388,6 @@ namespace Math
 
 		operator float* () { return mData; };
 		operator const float* () const { return static_cast<const float*>(mData); };
+		bool operator == (Vector4 const& rhs) const;
 	};
 }

@@ -7,4 +7,9 @@ namespace Math
 
 	Vector4::Vector4(Vector4 const& copyFrom)
 		: x(copyFrom.x), y(copyFrom.y), z(copyFrom.z), w(copyFrom.w) {}
+	
+	bool Vector4::operator==(Vector4 const& rhs) const
+	{
+		return x == rhs.x && y == rhs.y && z == rhs.z && w == rhs.w;
+	}
 }
