@@ -377,6 +377,15 @@ namespace Math
 		Vector4(Vector4 const& copyFrom);
 		~Vector4() {}
 
+		float& operator[] (int i)
+		{
+			// #ToDo: Add error handling logic in here
+			if (i == 0) return x;
+			else if (i == 1) return y;
+			else if (i == 2) return z;
+			else return w;
+		}
+
 		operator float* () { return mData; };
 		operator const float* () const { return static_cast<const float*>(mData); };
 	};
