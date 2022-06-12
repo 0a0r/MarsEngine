@@ -50,15 +50,15 @@ namespace Math
 		explicit Matrix44(Vector3 const& iBasis3D, Vector3 const& jBasis3D, Vector3 const& kBasis3D, Vector3 const& translation3D);
 		explicit Matrix44(Vector4 const& iBasis4D, Vector4 const& jBasis4D, Vector4 const& kBasis4D, Vector4 const& translation4D);
 	
-		Vector4 operator*(Vector4 const& v) const
-		{
-			Vector4 result;
-			result.x = mValues[Ix] * v.x + mValues[Jx] * v.y + mValues[Kx] * v.z + mValues[Tx] * v.w;
-			result.y = mValues[Iy] * v.x + mValues[Jy] * v.y + mValues[Ky] * v.z + mValues[Ty] * v.w;
-			result.z = mValues[Iz] * v.x + mValues[Jz] * v.y + mValues[Kz] * v.z + mValues[Tz] * v.w;
-			result.w = mValues[Iw] * v.x + mValues[Jw] * v.y + mValues[Kw] * v.z + mValues[Tw] * v.w;
-			return result;
-		}
+		//Vector4 operator*(Vector4 const& v) const
+		//{
+		//	Vector4 result;
+		//	result.x = mValues[Ix] * v.x + mValues[Jx] * v.y + mValues[Kx] * v.z + mValues[Tx] * v.w;
+		//	result.y = mValues[Iy] * v.x + mValues[Jy] * v.y + mValues[Ky] * v.z + mValues[Ty] * v.w;
+		//	result.z = mValues[Iz] * v.x + mValues[Jz] * v.y + mValues[Kz] * v.z + mValues[Tz] * v.w;
+		//	result.w = mValues[Iw] * v.x + mValues[Jw] * v.y + mValues[Kw] * v.z + mValues[Tw] * v.w;
+		//	return result;
+		//}
 
 		Matrix44 operator*(Matrix44 const& rhs) const
 		{
@@ -90,6 +90,7 @@ namespace Math
 			return result;
 		}
 
+		Vector4 Transform(Vector4 const& rowVec) const;
 		Vector3 TransformPoint(Vector3 const& point) const;
 		Vector3 TransformVector(Vector3 const& vector) const;
 		void	Transpose();

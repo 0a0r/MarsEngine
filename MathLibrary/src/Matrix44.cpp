@@ -97,6 +97,16 @@ namespace Math
 		return determiant;
 	}
 
+	Vector4 Matrix44::Transform(Vector4 const& v) const
+	{
+		Vector4 result;
+		result.x = mValues[Ix] * v.x + mValues[Jx] * v.y + mValues[Kx] * v.z + mValues[Tx] * v.w;
+		result.y = mValues[Iy] * v.x + mValues[Jy] * v.y + mValues[Ky] * v.z + mValues[Ty] * v.w;
+		result.z = mValues[Iz] * v.x + mValues[Jz] * v.y + mValues[Kz] * v.z + mValues[Tz] * v.w;
+		result.w = mValues[Iw] * v.x + mValues[Jw] * v.y + mValues[Kw] * v.z + mValues[Tw] * v.w;
+		return result;
+	}
+
 	Matrix44::Matrix44()
 	{
 		// Identity default
@@ -145,7 +155,7 @@ namespace Math
 		Vector4 h;
 		h.xyz = point;
 		h.w = 1.0f;
-		return (*this * h).xyz;
+		return Transform(h).xyz;
 	}
 
 	Vector3 Matrix44::TransformVector(Vector3 const& vector) const
@@ -153,7 +163,7 @@ namespace Math
 		Vector4 h;
 		h.xyz = vector;
 		h.w = 0.f;
-		return (*this * h).xyz;
+		return Transform(h).xyz;
 	}
 
 	void Matrix44::Transpose()

@@ -51,20 +51,52 @@ namespace UnitTest
 			Assert::IsTrue(result == matA * matB);
 		}
 
-		TEST_METHOD(MatrixMultiplyVector4Test)
+		TEST_METHOD(MatrixTransformTest)
 		{
 			Matrix44 matA = Matrix44(
-				Vector4(1.f, 2.f, 3.f, 4.f),
-				Vector4(5.f, 6.f, 7.f, 8.f),
-				Vector4(9.f, 10.f, 11.f, 12.f),
-				Vector4(13.f, 14.f, 15.f, 16.f)
+				Vector4(2.f, 3.f, 4.f, 5.f),
+				Vector4(6.f, 7.f, 8.f, 9.f),
+				Vector4(10.f, 11.f, 12.f, 13.f),
+				Vector4(14.f, 15.f, 16.f, 17.f)
 			);
 
-			Vector4 vecB = Vector4(1.f, 2.f, 3.f, 4.f);
+			Vector4 vecB = Vector4(7.f, 5.f, 3.f, 0.f);
 
-			Vector4 result = Vector4(90, 100.f, 110.f, 120.f);
+			Vector4 result = Vector4(74.f, 89.f, 104.f, 119.f);
 
-			Assert::IsTrue(result == matA * vecB);
+			Assert::IsTrue(result == matA.Transform(vecB));
+		}
+
+		TEST_METHOD(MatrixTransformVectorTest)
+		{
+			Matrix44 matA = Matrix44(
+				Vector4(2.f, 3.f, 4.f, 5.f),
+				Vector4(6.f, 7.f, 8.f, 9.f),
+				Vector4(10.f, 11.f, 12.f, 13.f),
+				Vector4(14.f, 15.f, 16.f, 17.f)
+			);
+
+			Vector3 vecB = Vector3(7.f, 5.f, 3.f);
+
+			Vector3 result = Vector3(74.f, 89.f, 104.f);
+
+			Assert::IsTrue(result == matA.TransformVector(vecB));
+		}
+
+		TEST_METHOD(MatrixTransformPointTest)
+		{
+			Matrix44 matA = Matrix44(
+				Vector4(2.f, 3.f, 4.f, 5.f),
+				Vector4(6.f, 7.f, 8.f, 9.f),
+				Vector4(10.f, 11.f, 12.f, 13.f),
+				Vector4(14.f, 15.f, 16.f, 17.f)
+			);
+
+			Vector3 posB = Vector3(7.f, 5.f, 3.f);
+
+			Vector3 result = Vector3(88.f, 104.f, 120.f);
+
+			Assert::IsTrue(result == matA.TransformPoint(posB));
 		}
 	};
 }
