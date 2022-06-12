@@ -60,6 +60,36 @@ namespace Math
 			return result;
 		}
 
+		Matrix44 operator*(Matrix44 const& rhs) const
+		{
+			Matrix44 const& mat = *this;
+			Matrix44 result = Matrix44::zero;
+			for (int i = 0; i < 4; i++)
+			{
+				for (int j = 0; j < 4; j++)
+				{
+					result[i][j] = (mat[i][0] * rhs[0][j] +
+									mat[i][1] * rhs[1][j] +
+									mat[i][2] * rhs[2][j] +
+									mat[i][3] * rhs[3][j]);
+				}
+			}
+			return result;
+		}
+
+		bool operator == (Matrix44 const& rhs) const
+		{
+			bool result = true;
+			for (int i = 0; i < 16; i++)
+			{
+				if (mValues[i] != rhs.mValues[i])
+				{
+					result = false;
+				}
+			}
+			return result;
+		}
+
 		Vector3 TransformPoint(Vector3 const& point) const;
 		Vector3 TransformVector(Vector3 const& vector) const;
 		void	Transpose();
